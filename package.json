@@ -1,0 +1,32 @@
+{
+  "name": "should-eventually",
+  "version": "0.0.1",
+  "description": "Add 'eventually' keyword to should.js",
+  "main": "index.js",
+  "scripts": {
+    "test-should": "if [ ! -d ./test/should ]; then git clone https://github.com/shouldjs/should.js ./test/should; (cd test/should; npm install); else (cd test/should; git pull; npm install); fi; echo \"require('../../..')(require('..'));\">./test/should/test/__load_eventually.test.js;(cd test/should; npm test)",
+    "test": "mocha --reporter spec test/**.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/myndzi/should-eventually.git"
+  },
+  "keywords": [
+    "should",
+    "promise"
+  ],
+  "author": "Kris Reeves <krisreeves@searchfanatics.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/myndzi/should-eventually/issues"
+  },
+  "homepage": "https://github.com/myndzi/should-eventually",
+  "devDependencies": {
+    "mocha": "latest",
+    "should": "latest",
+    "bluebird": "latest"
+  },
+  "peerDependencies": {
+    "should": ">= 4.x"
+  }
+}
