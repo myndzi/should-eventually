@@ -1,16 +1,53 @@
 'use strict';
 
+var inspect = require('util').inspect,
+    instance;
+
+// grab the constructors we need if present
+// or load should.js if constructors not present
+// or silently do nothing
+var _Assertion, _AssertionError;
+(function () {
+    var loaded = false;
+    
+    try { if (should) { loaded = true; } }
+    catch (e) { }
+    
+    if (loaded) {
+        console.log('Grabbing from global');
+        // extend the current global 'should'
+        _Assertion = should.constructor;
+        try { (0).should.be.ok; }
+        catch (e) {
+            _AssertionError = e.constructor;
+        }
+        return extendShould();
+    } else {
+        try {
+            instance = require('should');
+            return extendShould(instance);
+        } catch (e) {
+            // if it's not accessible, assume they're gonna inject something
+            return;
+        }
+    }
+})();
+
 module.exports = extendShould;
-try {
-    var should = require('should');
-    extendShould(should);
-} catch (e) {
-}
 
 function extendShould(should) {
-    var Assertion = should.Assertion,
-        AssertionError = should.AssertionError,
-        inspect = require('util').inspect;
+    var Assertion = _Assertion, AssertionError = _AssertionError;
+    
+    if (should && should.Assertion && should.AssertionError) {
+        instance = should;
+        // extend the injected copy of 'should'
+        Assertion = should.Assertion;
+        AssertionError = should.AssertionError;
+    } else {
+        return instance;
+    }
+    extendShould.Assertion = Assertion;
+    extendShould.AssertionError = AssertionError;
 
     function wrapAssertion(proxyObj, propName, storedAssertions) {
         var prop = { enumerable: true }
@@ -38,7 +75,7 @@ function extendShould(should) {
         enumerable: true,
         get: function () {
             // .eventually should only be called on a thenable
-            this.obj.then.should.be.a.Function;
+            this.obj.should.have.property('then').which.is.a.Function;
             
             // this will hold any assertions that get chained to the object we return
             // so they may be called later, after the promise is resolved
@@ -52,7 +89,7 @@ function extendShould(should) {
                 var should = (negate ?
                     (new Assertion(val)).not :
                     (new Assertion(val))
-                )
+                );
                 
                 var result = storedAssertions.reduce(function (accum, cur) {
                     // 'throw' must immediately follow 'eventually' if it is used
@@ -128,4 +165,6 @@ function extendShould(should) {
             return promise;
         }
     });
+
+    return should;
 };

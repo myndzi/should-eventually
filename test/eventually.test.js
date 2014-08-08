@@ -1,5 +1,4 @@
-var should = require('should');
-require('../');
+var should = require('../')();
 
 var Promise = require('bluebird');
 describe('Should - Eventually', function () {

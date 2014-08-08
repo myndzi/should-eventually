@@ -40,3 +40,7 @@ You may also inject the instance of 'should' to modify:
 You may also run the latest should.js test suite with should-eventually loaded like so:
 
     npm run test-should
+
+#### Troubleshoot
+
+If you manage to require a separately-sourced copy of 'should' in your test script, it can overwrite the extended prototypes and cause this extension to fail. This may happen if you've installed the dev dependencies and are using `should-eventually` to instantiate `should` (non-injection pattern).
