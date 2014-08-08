@@ -1,2 +1,3 @@
 node_modules
 /test/should
+npm-debug.log
