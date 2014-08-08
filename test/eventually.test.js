@@ -1,4 +1,5 @@
-require('../')(require('should'));
+var should = require('should');
+require('../');
 
 var Promise = require('bluebird');
 describe('Should - Eventually', function () {
@@ -33,6 +34,12 @@ describe('Should - Eventually', function () {
     });
     it('should allow a chain of methods just like a synchronous value', function () {
         return Promise.resolve({foo: 1}).should.eventually.be.an.Object.and.have.property('foo').equal(1);
+    });
+    it('should reject with an AssertionError if chained assertions fail', function () {
+        return Promise.resolve('foo').should.eventually.equal('bar')
+        .catch(function (err) {
+            err.should.be.an.instanceOf(should.AssertionError);
+        });
     });
     it('should fail when not used on a promise', function () {
         (function () {

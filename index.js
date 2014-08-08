@@ -1,6 +1,13 @@
 'use strict';
 
-module.exports = function (should) {
+module.exports = extendShould;
+try {
+    var should = require('should');
+    extendShould(should);
+} catch (e) {
+}
+
+function extendShould(should) {
     var Assertion = should.Assertion,
         AssertionError = should.AssertionError,
         inspect = require('util').inspect;
