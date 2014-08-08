@@ -13,6 +13,8 @@
   },
   "keywords": [
     "should",
+    "eventually",
+    "chai-as-promised",
     "promise"
   ],
   "author": "Kris Reeves <krisreeves@searchfanatics.com>",
