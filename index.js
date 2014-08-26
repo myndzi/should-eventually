@@ -91,6 +91,10 @@ function extendShould(should) {
                     (new Assertion(val))
                 );
                 
+                if (storedAssertions[0][0] !== 'throw' && !resolved) {
+                    throw val;
+                }
+                
                 var result = storedAssertions.reduce(function (accum, cur) {
                     // 'throw' must immediately follow 'eventually' if it is used
                     if (cur[0] === 'throw') {

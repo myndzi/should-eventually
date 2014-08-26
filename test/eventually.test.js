@@ -25,6 +25,13 @@ describe('Should - Eventually', function () {
     it('should support propagated negated .throw', function () {
         return Promise.resolve(1).should.not.eventually.throw();
     });
+    it('should reject with the original rejection error if not caught', function () {
+        return Promise.try(function () {
+            return Promise.reject(3).should.eventually.be.an.Array;
+        }).catch(function (e) {
+            e.should.equal(3);
+        });
+    });
     it('should support empty resolved values', function () {
         return Promise.resolve().should.not.eventually.throw();
     });
