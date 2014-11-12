@@ -33,7 +33,7 @@ describe('Should - Eventually', function () {
         });
     });
     it('should support empty resolved values', function () {
-        return Promise.resolve().should.not.eventually.throw();
+        return Promise.resolve().should.not.eventually.throw(/Expected promise to be resolved/);
     });
     it('should support empty rejected values', function () {
         return Promise.reject().should.eventually.throw();

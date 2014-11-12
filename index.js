@@ -120,7 +120,7 @@ function extendShould(should) {
                             caught = true;
                         } else {
                             throw new AssertionError({
-                                message: 'Expected promise to be ' + (negate ? 'rejected' : 'resolved') +
+                                message: 'Expected promise to be ' + (negate ? 'resolved' : 'rejected') +
                                     ' but instead it was ' + (resolved ? 'resolved' : 'rejected') + ' with ' + inspect(val),
                                 actual: val
                             });
