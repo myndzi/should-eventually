@@ -14,7 +14,7 @@ var _Assertion, _AssertionError;
     catch (e) { }
     
     if (loaded) {
-        console.log('Grabbing from global');
+        //console.log('Grabbing from global');
         // extend the current global 'should'
         _Assertion = should.constructor;
         try { (0).should.be.ok; }

@@ -29,6 +29,6 @@
     "bluebird": "latest"
   },
   "peerDependencies": {
-    "should": ">= 4.x"
+    "should": "4.0.x"
   }
 }
