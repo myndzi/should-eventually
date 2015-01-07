@@ -1,6 +1,6 @@
 {
   "name": "should-eventually",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Add 'eventually' keyword to should.js",
   "main": "index.js",
   "scripts": {
@@ -29,6 +29,6 @@
     "bluebird": "latest"
   },
   "peerDependencies": {
-    "should": "4.0.x"
+    "should": "^4.0.0"
   }
 }
