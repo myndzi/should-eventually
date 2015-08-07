@@ -29,6 +29,6 @@
     "bluebird": "latest"
   },
   "peerDependencies": {
-    "should": "^4.0.0 || ^5.0.0 || ^6.0.0"
+    "should": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0"
   }
 }
