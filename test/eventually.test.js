@@ -38,6 +38,9 @@ describe('Should - Eventually', function () {
     it('should support empty rejected values', function () {
         return Promise.reject().should.eventually.throw();
     });
+    it('should support resolved array length', function() {
+        return Promise.resolve([1,2,3]).should.eventually.have.length(3);
+    });
     it('should allow a chain of methods just like a synchronous value', function () {
         return Promise.resolve({foo: 1}).should.eventually.be.an.Object.and.have.property('foo').equal(1);
     });
