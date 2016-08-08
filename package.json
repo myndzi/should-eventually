@@ -1,6 +1,6 @@
 {
   "name": "should-eventually",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Add 'eventually' keyword to should.js",
   "main": "index.js",
   "scripts": {
@@ -24,11 +24,11 @@
   },
   "homepage": "https://github.com/myndzi/should-eventually",
   "devDependencies": {
-    "mocha": "latest",
-    "should": "latest",
-    "bluebird": "latest"
+    "mocha": "^3.0.0",
+    "should": ">=4.0.0 <=4.5.2",
+    "bluebird": "^2.0.0"
   },
   "peerDependencies": {
-    "should": "^4.0.0 || ^5.0.0 || ^6.0.0"
+    "should": ">=4.0.0 <=4.5.2"
   }
 }
