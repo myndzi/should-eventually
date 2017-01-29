@@ -1,3 +1,6 @@
+### Deprecated
+should.js has promise support directly now, you should use it instead.
+
 ### Should-Eventually
 ---
 Add chai-as-promised style 'eventually' verb to should.js assertions.
